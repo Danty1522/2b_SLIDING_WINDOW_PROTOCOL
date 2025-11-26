@@ -8,38 +8,39 @@
 5. If your frames reach the server it will send ACK signal to client
 6. Stop the Program
 ## PROGRAM
-## CLIENT:
+## server
 ```
 import socket
-s = socket.socket()
-s.bind(('localhost',4000))
-s.listen(5)
-c, addr = s.accept()
-ListSize = int(input("Enter the number of frames to send : "))
-List = list(range(ListSize))
-WindowSize = int(input("Enter Window Size : "))
-st, i = 0, 0
-while True:
-    while(i < ListSize):
-        st += WindowSize
-        c.send(str(List[i:st]).encode())
-        Acknowledgment = c.recv(1024).decode()
-        if Acknowledgment:
-            print(Acknowledgment)
-            i+=st
-```
-## SERVER:
-```
-import socket
-s = socket.socket()
-s.connect(('localhost', 4000))
+s=socket.socket()
+s.connect(('localhost', 8000))
 while True:
     print(s.recv(1024).decode())
-    s.send("Acknowledgement received from the server".encode())
+    s.send("acknowledgement received from the server".encode())
+```
+
+## client
+```
+import socket
+s=socket.socket()
+s.bind(('localhost',8000))
+s.listen(5)
+c,addr=s.accept()
+size=int(input("Enter number of frames to send : "))
+l=list(range(size))
+s=int(input("Enter Window Size : "))
+st=0
+i=0
+while True:
+    while(i<len(l)):
+        st+=s
+        c.send(str(l[i:st]).encode())
+        ack=c.recv(1024).decode()
+        if ack:
+            print(ack)
+            i+=s
 ```
 ## OUPUT
-<img width="1920" height="1200" alt="Screenshot (40)" src="https://github.com/user-attachments/assets/f6fd184f-8f17-4afd-bf66-ea655bfa4fc4" />
-
+<img width="1919" height="1145" alt="Screenshot 2025-10-13 144035" src="https://github.com/user-attachments/assets/1e9cecaf-53c7-40e7-96cf-34a21e6d1b16" />
 
 ## RESULT
 Thus, python program to perform stop and wait protocol was successfully executed
