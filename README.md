@@ -40,7 +40,8 @@ while True:
             i+=s
 ```
 ## OUPUT
-<img width="1919" height="1145" alt="Screenshot 2025-10-13 144035" src="https://github.com/user-attachments/assets/1e9cecaf-53c7-40e7-96cf-34a21e6d1b16" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/131b7da1-f793-4d00-9e77-5a392ad931af" />
+
 
 ## RESULT
 Thus, python program to perform stop and wait protocol was successfully executed
